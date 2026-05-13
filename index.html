@@ -642,6 +642,34 @@ input{
   z-index:120;
   font-size:13px;
 }
+.nameGate{
+  position:absolute;
+  inset:34px 0 0;
+  z-index:130;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  background:linear-gradient(160deg,rgba(7,17,13,.96),rgba(17,27,33,.97) 58%,rgba(5,45,34,.94));
+}
+.nameGate.show{display:flex}
+.nameGateCard{
+  width:min(360px,100%);
+  background:#111b21;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:26px;
+  padding:22px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+}
+.nameGateCard h3{margin:0 0 8px;font-size:22px}
+.nameGateCard p{margin:0 0 16px;color:#c8d4d8;font-size:14px;line-height:1.45}
+.nameGateCard input{margin-bottom:10px}
+.nameGateError{display:none;color:#ff9aa4;font-size:13px;margin:2px 0 10px}
+@media(max-width:900px){
+  .nameGate{inset:30px 0 0;padding:16px}
+  .nameGateCard{border-radius:22px;padding:20px}
+}
+
 .certCanvas{display:none}
 .mobile-name{
   display:none;
@@ -877,6 +905,177 @@ input{
   box-sizing:border-box;
 }
 
+
+/* === Ajustes finais de responsividade mobile === */
+.choices:empty{display:none;}
+#chat.hasChoices .choices{display:grid;}
+
+@media(max-width:900px){
+  html,body{
+    width:100%;
+    min-height:100%;
+    height:100%;
+    overflow:hidden;
+  }
+  body{
+    padding:0;
+    display:block;
+    background:#0b141a;
+    overscroll-behavior:none;
+  }
+  .stage{
+    width:100vw;
+    height:100dvh;
+    display:block;
+  }
+  .panel{display:none;}
+  .phone{
+    width:100vw;
+    height:100dvh;
+    max-height:none;
+    min-height:0;
+    aspect-ratio:auto;
+    border:0;
+    border-radius:0;
+    box-shadow:none;
+    overflow:hidden;
+  }
+  .screen{
+    width:100%;
+    height:100%;
+    border-radius:0;
+    overflow:hidden;
+  }
+  .notch{display:none;}
+  .topbar{
+    height:30px;
+    padding:0 max(14px,env(safe-area-inset-left)) 5px max(14px,env(safe-area-inset-left));
+    flex-shrink:0;
+  }
+  #home,#chat{
+    height:calc(100dvh - 30px) !important;
+    overflow:hidden;
+  }
+  .homehead{
+    height:142px;
+    min-height:142px;
+    padding:12px 14px 0;
+    position:relative;
+    z-index:5;
+  }
+  .home-title{gap:10px;}
+  .homehead h2{font-size:27px;}
+  .home-actions{gap:14px;font-size:20px;}
+  .searchbox{
+    height:36px;
+    margin-top:10px;
+    font-size:13px;
+  }
+  .tabs{
+    height:36px;
+    margin:8px -14px 0;
+    font-size:11px;
+  }
+  .tabs span{padding-top:8px;}
+  .chatlist{
+    height:calc(100dvh - 30px - 142px);
+    padding-top:0;
+    overflow-y:auto;
+    overflow-x:hidden;
+  }
+  .chatitem:first-child{margin-top:0;}
+  .chatitem{
+    min-height:70px;
+    padding:9px 12px;
+  }
+  .preview{padding:6px 0 10px;}
+  .apphead{
+    height:62px;
+    padding:7px 10px;
+  }
+  .chatbody{
+    top:92px;
+    bottom:58px;
+    padding:10px 10px 18px;
+    overflow-y:auto;
+    overflow-x:hidden;
+  }
+  #chat.hasChoices .chatbody{
+    bottom:206px;
+  }
+  .choices{
+    left:8px;
+    right:8px;
+    bottom:58px;
+    height:auto;
+    max-height:148px;
+    overflow-y:auto;
+    padding:0 0 7px;
+    background:linear-gradient(180deg,rgba(11,20,26,0),#0b141a 16px);
+    padding-top:14px;
+  }
+  .choice{
+    font-size:13px;
+    line-height:1.25;
+    padding:10px 11px;
+    border-radius:13px;
+  }
+  .inputbar{
+    height:58px;
+    padding:6px 8px max(8px,env(safe-area-inset-bottom));
+  }
+  .fakeinput{height:42px;font-size:13px;}
+  .mic{width:42px;height:42px;flex-basis:42px;}
+  .msg{
+    max-width:86%;
+    font-size:14px;
+  }
+  .audio{min-width:min(236px,72vw);}
+  .lock{
+    height:calc(100dvh - 30px);
+    padding:36px 20px max(22px,env(safe-area-inset-bottom));
+  }
+  .locktime{font-size:58px;}
+  .result{
+    inset:30px 0 0;
+    padding:18px 14px max(24px,env(safe-area-inset-bottom));
+  }
+  .modal{padding:14px;}
+  .card{max-width:calc(100vw - 28px);}
+  .callOverlay{
+    inset:30px 0 0;
+    padding:46px 20px max(34px,env(safe-area-inset-bottom));
+  }
+}
+
+@media(max-width:390px){
+  .homehead{height:136px;min-height:136px;}
+  .chatlist{height:calc(100dvh - 30px - 136px);}
+  .homehead h2{font-size:24px;}
+  .avatar,.realpic{width:44px;height:44px;flex-basis:44px;}
+  .headpic{width:38px;height:38px;flex-basis:38px;}
+  .chatitem{min-height:66px;padding:8px 10px;}
+  .ctitle{font-size:14px;}
+  .last{font-size:12.2px;}
+  .msg{font-size:13.4px;max-width:88%;}
+  .choice{font-size:12.3px;padding:9px 10px;}
+  .choices{max-height:138px;}
+  #chat.hasChoices .chatbody{bottom:196px;}
+  .locktime{font-size:52px;}
+}
+
+@media(max-height:720px) and (max-width:900px){
+  .homehead{height:128px;min-height:128px;}
+  .chatlist{height:calc(100dvh - 30px - 128px);}
+  .searchbox{height:34px;margin-top:8px;}
+  .tabs{margin-top:6px;}
+  .choices{max-height:124px;}
+  #chat.hasChoices .chatbody{bottom:182px;}
+  .lock{padding-top:26px;}
+  .locktime{font-size:48px;}
+  .notif{padding:10px 11px;margin:6px 0;}
+}
+
 </style>
 </head>
 <body>
@@ -886,6 +1085,15 @@ input{
     <div class="screen">
       <div class="topbar"><span id="clock">09:41</span><span class="icons">▰ 5G ◔</span></div>
       <div id="toast" class="toast"></div>
+      <div id="nameGate" class="nameGate" aria-modal="true" role="dialog">
+        <div class="nameGateCard">
+          <h3>Identificação do jogador</h3>
+          <p>Digite o nome que vai aparecer no certificado. Sem nome, sem expediente... até o golpe falso precisa de cadastro.</p>
+          <input id="mobilePlayerName" placeholder="Nome para o certificado" maxlength="42" autocomplete="name" />
+          <div id="nameGateError" class="nameGateError">Informe um nome para continuar.</div>
+          <button class="mainbtn" style="width:100%" onclick="submitNameGate()">Entrar no expediente digital</button>
+        </div>
+      </div>
       <div id="lock" class="lock">
         <div>
           <div class="locktime" id="lockTime">09:41</div>
@@ -987,9 +1195,66 @@ function ringStop(){ if(ringTimer){clearInterval(ringTimer); ringTimer=null;} }
 
 function tick(){const d=new Date(); const t=d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}); clock.textContent=t; lockTime.textContent=t} setInterval(tick,1000); tick();
 function toast(msg){const el=document.getElementById('toast'); el.textContent=msg; el.style.display='block'; setTimeout(()=>el.style.display='none',2600)}
-function showIntro(){beep('notif'); document.getElementById('lock').style.display='none'; document.getElementById('home').style.display='block'; renderList(); toast('Dica: nem toda mensagem suspeita é golpe. O jogo é validar sem paranoia.');}
-function startFromPanel(){const n=document.getElementById('playerName').value.trim(); if(!n){toast('Sem nome, sem expediente. Até golpe pede identificação melhor que isso.');return} state.name=n; showIntro();}
-function ensureName(){ if(state.name) return true; let n=document.getElementById('playerName')?.value?.trim()||prompt('Digite seu nome para iniciar o desafio e emitir o certificado:'); if(!n||!n.trim()){toast('Informe o nome para continuar.'); return false} state.name=n.trim().slice(0,42); return true}
+function openNameGate(){
+  const gate=document.getElementById('nameGate');
+  const input=document.getElementById('mobilePlayerName');
+  const panelName=document.getElementById('playerName')?.value?.trim()||'';
+  if(input && panelName && !input.value) input.value=panelName;
+  gate.classList.add('show');
+  setTimeout(()=>input?.focus(),80);
+}
+function closeNameGate(){document.getElementById('nameGate').classList.remove('show');}
+function setPlayerName(n){
+  const clean=(n||'').trim().slice(0,42);
+  if(!clean) return false;
+  state.name=clean;
+  const p=document.getElementById('playerName');
+  const m=document.getElementById('mobilePlayerName');
+  if(p) p.value=clean;
+  if(m) m.value=clean;
+  return true;
+}
+function submitNameGate(){
+  const input=document.getElementById('mobilePlayerName');
+  const err=document.getElementById('nameGateError');
+  if(!setPlayerName(input?.value)){
+    if(err) err.style.display='block';
+    input?.focus();
+    toast('Informe o nome para continuar.');
+    return false;
+  }
+  if(err) err.style.display='none';
+  closeNameGate();
+  document.getElementById('home').style.display='block';
+  renderList();
+  toast('Dica: nem toda mensagem suspeita é golpe. O jogo é validar sem paranoia.');
+  return true;
+}
+function showIntro(){
+  beep('notif');
+  document.getElementById('lock').style.display='none';
+  if(!state.name){
+    document.getElementById('home').style.display='none';
+    openNameGate();
+    return;
+  }
+  document.getElementById('home').style.display='block';
+  renderList();
+  toast('Dica: nem toda mensagem suspeita é golpe. O jogo é validar sem paranoia.');
+}
+function startFromPanel(){
+  const n=document.getElementById('playerName').value;
+  if(!setPlayerName(n)){toast('Sem nome, sem expediente. Até golpe pede identificação melhor que isso.'); openNameGate(); return}
+  showIntro();
+}
+function ensureName(){
+  if(state.name) return true;
+  openNameGate();
+  return false;
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter' && document.getElementById('nameGate')?.classList.contains('show')) submitNameGate();
+});
 function renderList(){
   const list=document.getElementById('chatlist'); list.innerHTML='';
   DATA.chapters.forEach((c,i)=>{
@@ -1007,7 +1272,7 @@ function renderList(){
 function openChat(i){
   if(!ensureName()) return;
   state.chapter=i; beep('notif');
-  const c=DATA.chapters[i]; home.style.display='none'; chat.style.display='block'; document.getElementById('chatAvatar').outerHTML=avatarHtml(c.contact,'headpic').replace('<div','<div id="chatAvatar"'); chatName.textContent=c.contact; chatSub.textContent='digitando...';
+  const c=DATA.chapters[i]; home.style.display='none'; chat.style.display='block'; chat.classList.remove('hasChoices'); document.getElementById('chatAvatar').outerHTML=avatarHtml(c.contact,'headpic').replace('<div','<div id="chatAvatar"'); chatName.textContent=c.contact; chatSub.textContent='digitando...';
   const body=document.getElementById('chatbody'); body.innerHTML=''; choices.innerHTML='';
   let idx=0;
   function addNext(){
@@ -1027,6 +1292,7 @@ function addMsg(who,txt){
 }
 function renderChoices(c){
  choices.innerHTML='';
+ chat.classList.add('hasChoices');
  c.actions.forEach((a,idx)=>{
    const b=document.createElement('button'); b.className='choice'; b.textContent=a.label;
    b.onclick=()=>choose(c,a,idx);
@@ -1045,11 +1311,11 @@ function showImpact(c,a){
  modalText.textContent=a.impact; modal.style.display='flex';
 }
 function nextChapter(){
- modal.style.display='none'; chat.style.display='none'; home.style.display='block';
+ modal.style.display='none'; chat.classList.remove('hasChoices'); chat.style.display='none'; home.style.display='block';
  state.chapter++;
  if(state.chapter>=DATA.chapters.length){renderList(); setTimeout(showResult,700)} else {renderList(); toast('Nova conversa recebida.');}
 }
-function goHome(){chat.style.display='none'; home.style.display='block'; renderList();}
+function goHome(){chat.classList.remove('hasChoices'); chat.style.display='none'; home.style.display='block'; renderList();}
 function finalProfile(){
  const pct=Math.round((state.score/state.max)*100);
  const bad=state.flags.filter(f=>!['verified','partial'].includes(f)).length;
@@ -1065,6 +1331,7 @@ function flagSummary(){
  return Object.entries(count).map(([k,v])=>`${labels[k]||k}: ${v}`).join(' • ');
 }
 function showResult(){
+ if(!ensureName()) return;
  const pct=Math.round((state.score/state.max)*100); const [title,desc]=finalProfile();
  const passed=pct>=70;
  result.style.display='block';
